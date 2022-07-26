@@ -5,26 +5,29 @@ import 'package:flutter/material.dart';
 import '../component/button.dart';
 
 class HomePage extends StatelessWidget {
-  final bButton = MainButton(
-    bgColor: Colors.black,
-    txtColor: Colors.white,
-    btnTxt: 'Login',
-    route: loginscreen,
-  );
-  final tButton = MainButton(
-    bgColor: Colors.transparent,
-    txtColor: Colors.black,
-    btnTxt: 'Register',
-  );
-
   @override
   Widget build(BuildContext context) {
-      void loginScreen() {
+    void loginScreen() {
       Navigator.pushNamed(context, '/login');
     }
+
     void registrationScreen() {
       Navigator.pushNamed(context, '/registration');
     }
+
+    final bButton = MainButton(
+      bgColor: Colors.black,
+      txtColor: Colors.white,
+      btnTxt: 'Login',
+      route: loginScreen,
+    );
+    final tButton = MainButton(
+      bgColor: Colors.transparent,
+      txtColor: Colors.black,
+      btnTxt: 'Register',
+      route: registrationScreen,
+    );
+
     return Scaffold(
         body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
