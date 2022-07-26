@@ -67,8 +67,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             margin: EdgeInsets.symmetric(horizontal: 20),
             child: TextFormField(
+              showCursor: true,
+              cursorColor: Colors.grey.shade400,
+              cursorHeight: 5,
               decoration: InputDecoration(
-                border: InputBorder.none,
+                labelText: 'dflsadfjlsadkj',
+                contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                hintText: 'Enter your email',
+                border: OutlineInputBorder(),
+
                 // focusedBorder: OutlineInputBorder(
                 //   borderRadius: BorderRadius.all(
                 //     Radius.circular(8),
