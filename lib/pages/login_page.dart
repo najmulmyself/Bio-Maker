@@ -57,6 +57,26 @@ class _LoginScreenState extends State<LoginScreen> {
           //     ),
           //   ),
           // )
+          Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              color: Colors.grey.shade200,
+              borderRadius: BorderRadius.all(
+                Radius.circular(6),
+              ),
+            ),
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            child: TextFormField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                // focusedBorder: OutlineInputBorder(
+                //   borderRadius: BorderRadius.all(
+                //     Radius.circular(8),
+                //   ),
+                // ),
+              ),
+            ),
+          )
         ],
       ),
     );
