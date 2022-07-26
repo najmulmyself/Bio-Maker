@@ -1,23 +1,33 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
+import '../component/button.dart';
+
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final bButton = MainButton(
+    bgColor: Colors.black,
+    txtColor: Colors.white,
+    btnTxt: 'Login',
+  );
+  final tButton = MainButton(
+    bgColor: Colors.transparent,
+    txtColor: Colors.black,
+    btnTxt: 'Register',
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          style: ButtonStyle(
-              maximumSize: MaterialStateProperty.all(Size.infinite),
-              backgroundColor: MaterialStateProperty.all(Colors.black)),
-          onPressed: null,
-          child: Text(
-            'Login',
-            style: TextStyle(color: Colors.white),
-          ),
+        body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        bButton,
+        SizedBox(
+          height: 20,
         ),
-      ),
-    );
+        tButton,
+      ],
+    ));
   }
 }
