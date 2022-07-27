@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../component/button.dart';
+import '../component/social_button.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -119,6 +121,31 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.black,
                 thickness: 2,
               ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SocialButton(
+                icon: FontAwesomeIcons.facebookF,
+                // color: Colors.blue.shade700,
+              ),
+              SocialButton(
+                icon: FontAwesomeIcons.apple,
+                // color: Colors.green,
+              ),
+              SocialButton(
+                icon: FontAwesomeIcons.google,
+                // color: Colors.red,
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              Text('Don\'t have an account ?'),
+              Text('Register now'),
             ],
           )
         ],
