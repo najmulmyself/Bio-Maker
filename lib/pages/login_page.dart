@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../component/button.dart';
+
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
 
@@ -10,6 +12,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final bButton = MainButton(
+    bgColor: Colors.black,
+    txtColor: Colors.white,
+    btnTxt: 'Login',
+    route: null,
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +91,34 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              Text('Forget Password'),
+              Container(
+                margin: EdgeInsets.only(right: 20, top: 10),
+                alignment: AlignmentDirectional.centerEnd,
+                child: Text(
+                  'Forget Password',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          bButton,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              Divider(
+                color: Colors.red,
+                height: 5,
+                thickness: 20,
+              ),
+              Text('Or login with'),
+              Divider(
+                height: 5,
+                color: Colors.black,
+                thickness: 2,
+              ),
             ],
           )
         ],
