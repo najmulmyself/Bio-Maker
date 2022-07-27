@@ -29,22 +29,25 @@ class HomePage extends StatelessWidget {
     );
 
     return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image(
-          height: 250,
-          image: AssetImage('assets/images/human.png'),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        bButton,
-        SizedBox(
-          height: 20,
-        ),
-        tButton,
-      ],
+        body: Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image(
+            height: 250,
+            image: AssetImage('assets/images/human.png'),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          bButton,
+          SizedBox(
+            height: 20,
+          ),
+          tButton,
+        ],
+      ),
     ));
   }
 }
