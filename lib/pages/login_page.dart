@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -34,55 +36,55 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Text('Welcome back! Glad \n to see you,Again!'),
-          // Container(
-          //   margin: EdgeInsets.symmetric(horizontal: 20),
-          //   height: 50,
-          //   decoration: BoxDecoration(
-          //     border: Border.all(color: Colors.grey.shade400),
-          //     borderRadius: BorderRadius.all(
-          //       Radius.circular(8),
-          //     ),
-          //     color: Colors.white10,
-          //   ),
-          //   child: Padding(
-          //     padding: const EdgeInsets.symmetric(horizontal: 18.0),
-          //     child: TextField(
-          //       decoration: InputDecoration(
-          //         // focusedBorder: OutlineInputBorder(
-          //         //   borderSide: const BorderSide(color: Colors.red, width: 0),
-          //         //   borderRadius: BorderRadius.circular(25.0),
-          //         // ),
-          //         border: InputBorder.none,
-          //       ),
-          //     ),
-          //   ),
-          // )
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              color: Colors.grey.shade200,
-              borderRadius: BorderRadius.all(
-                Radius.circular(6),
+          Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(6),
+                  ),
+                ),
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
+                  showCursor: true,
+                  cursorColor: Colors.grey.shade400,
+                  cursorHeight: 5,
+                  decoration: InputDecoration(
+                    // labelText: 'dflsadfjlsadkj',
+                    contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                    hintText: 'Enter your email',
+                    border: InputBorder.none,
+                  ),
+                ),
               ),
-            ),
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            child: TextFormField(
-              showCursor: true,
-              cursorColor: Colors.grey.shade400,
-              cursorHeight: 5,
-              decoration: InputDecoration(
-                labelText: 'dflsadfjlsadkj',
-                contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                hintText: 'Enter your email',
-                border: OutlineInputBorder(),
-
-                // focusedBorder: OutlineInputBorder(
-                //   borderRadius: BorderRadius.all(
-                //     Radius.circular(8),
-                //   ),
-                // ),
+              SizedBox(
+                height: 20,
               ),
-            ),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(6),
+                  ),
+                ),
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: TextFormField(
+                  showCursor: true,
+                  cursorColor: Colors.grey.shade400,
+                  cursorHeight: 5,
+                  decoration: InputDecoration(
+                    // labelText: 'dflsadfjlsadkj',
+                    contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                    hintText: 'Enter your password',
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+              Text('Forget Password'),
+            ],
           )
         ],
       ),
