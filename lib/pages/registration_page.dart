@@ -46,8 +46,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
+          body: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
+            hasScrollBody:
+                false, // should be false , if true; it will overflow content
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
@@ -243,9 +246,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ],
               ),
             ),
-          ),
-        ),
-      ),
+          )
+        ],
+      )),
     );
   }
 }
