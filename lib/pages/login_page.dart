@@ -157,7 +157,11 @@ class _LoginScreenState extends State<LoginScreen> {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Text('Don\'t have an account ?'),
-                Text('Register now'),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/registration');
+                    },
+                    child: Text('Register now')),
               ],
             )
           ],
