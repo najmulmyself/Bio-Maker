@@ -4,8 +4,8 @@ class MainButton extends StatelessWidget {
   final bgColor;
   final txtColor;
   final btnTxt;
-  final route;
-  MainButton({this.bgColor, this.txtColor, this.btnTxt, this.route});
+  final onPressed;
+  MainButton({this.bgColor, this.txtColor, this.btnTxt, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class MainButton extends StatelessWidget {
       ),
       width: double.infinity,
       child: MaterialButton(
-        onPressed: route,
+        onPressed: onPressed,
         child: Text(
           btnTxt,
           style: TextStyle(color: txtColor),

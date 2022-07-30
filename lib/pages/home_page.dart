@@ -19,13 +19,13 @@ class HomePage extends StatelessWidget {
       bgColor: Colors.black,
       txtColor: Colors.white,
       btnTxt: 'Login',
-      route: loginScreen,
+      onPressed: loginScreen,
     );
     final tButton = MainButton(
       bgColor: Colors.transparent,
       txtColor: Colors.black,
       btnTxt: 'Register',
-      route: registrationScreen,
+      onPressed: registrationScreen,
     );
 
     return Scaffold(

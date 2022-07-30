@@ -36,11 +36,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
-  final bButton = MainButton(
+  MainButton bButton = MainButton(
     bgColor: Colors.black,
     txtColor: Colors.white,
     btnTxt: 'Register',
-    route: null,
+    onPressed: createUser(),
   );
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           SliverFillRemaining(
             hasScrollBody:
                 false, // should be false , if true; it will overflow content
-                // for more head over to this link : https://stackoverflow.com/questions/63844494/singlechildscrollview-column-either-overflow-or-ignore-mainaxisalignment
+            // for more head over to this link : https://stackoverflow.com/questions/63844494/singlechildscrollview-column-either-overflow-or-ignore-mainaxisalignment
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(

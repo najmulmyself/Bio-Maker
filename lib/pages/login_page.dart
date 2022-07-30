@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
     bgColor: Colors.black,
     txtColor: Colors.white,
     btnTxt: 'Login',
-    route: null,
+    onPressed: null,
   );
   @override
   Widget build(BuildContext context) {
