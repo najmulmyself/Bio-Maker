@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "810971197315",
+    "project_id": "bio-maker-4ada1",
+    "storage_bucket": "bio-maker-4ada1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810971197315:android:92539696f2eb4d538390b6",
+        "android_client_info": {
+          "package_name": "com.example.bio_maker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810971197315-qv4s240hcvunkregrsma1bt9lkvdobrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6easKVhDlmw5HyV3zpNmFYlf3yswa8Ic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810971197315-qv4s240hcvunkregrsma1bt9lkvdobrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
