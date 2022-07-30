@@ -13,6 +13,23 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  Future<void>? createUser() {
+    try {
+      final userCredential = FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: emailController.text, password: passwordController.text);
+    } on FirebaseAuthException catch (e) {
+      if(e.code == 'email-already-in-use'){
+        
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   final bButton = MainButton(
     bgColor: Colors.black,
     txtColor: Colors.white,
@@ -93,6 +110,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   // margin: EdgeInsets.symmetric(horizontal: 20),
                   child: TextFormField(
+                    controller: emailController,
                     showCursor: true,
                     cursorColor: Colors.grey.shade400,
                     cursorHeight: 5,
@@ -100,6 +118,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       // labelText: 'dflsadfjlsadkj',
                       contentPadding: EdgeInsets.symmetric(horizontal: 8),
                       hintText: 'Email',
+
                       border: InputBorder.none,
                     ),
                   ),
@@ -117,6 +136,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   // margin: EdgeInsets.symmetric(horizontal: 20),
                   child: TextFormField(
+                    controller: passwordController,
                     showCursor: true,
                     cursorColor: Colors.grey.shade400,
                     cursorHeight: 5,
