@@ -21,20 +21,36 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController conPasswordController = TextEditingController();
 
-  Future<void>? createUser() {
+  Future<void>? createUser() async {
     try {
-      final userCredential = FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailController.text, password: passwordController.text);
-      if (userCredential != null) {
-        final util = Util(text: 'Registration Successfully');
+      if (passwordController.text == conPasswordController.text) {
+        final userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailController.text, password: passwordController.text);
+        if (userCredential != null) {
+          final util = Util(
+              text: 'Registration Successfull',
+              bgColor: Colors.green,
+              txtColor: Colors.white);
+          util.showSnack(context);
+          Navigator.pushNamed(context, '/login');
+        }
+      } else {
+        final util = Util(
+            text: "Password did not match",
+            bgColor: Colors.red,
+            txtColor: Colors.white);
         util.showSnack(context);
-        Navigator.pushNamed(context, '/login');
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
-        final util = Util(text: 'Email already in use');
+        final util = Util(
+          text: 'Email already in use',
+          bgColor: Colors.red,
+          txtColor: Colors.white,
+        );
         util.showSnack(context);
       }
     } catch (e) {
@@ -117,6 +133,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         height: 20,
                       ),
                       CustomTextField(
+                        controller: conPasswordController,
                         text: 'Confirm Password',
                       ),
                     ],

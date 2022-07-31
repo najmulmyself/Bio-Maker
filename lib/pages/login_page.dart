@@ -1,6 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_local_variable, unused_catch_clause
 
 import 'package:bio_maker/component/custom_text_field.dart';
+import 'package:bio_maker/utils/scaffold_msg.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -15,12 +18,49 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final bButton = MainButton(
-    bgColor: Colors.black,
-    txtColor: Colors.white,
-    btnTxt: 'Login',
-    onPressed: null,
-  );
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  // final bButton = MainButton(
+  //   bgColor: Colors.black,
+  //   txtColor: Colors.white,
+  //   btnTxt: 'Login',
+  //   onPressed: null,
+  // );
+
+  Future<void>? login() async {
+    try {
+      final userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: email.text, password: password.text)
+          .then((value) {
+        final util = Util(
+            bgColor: Colors.green,
+            text: 'Login successful',
+            txtColor: Colors.white);
+        util.showSnack(context);
+      }).then(
+        (value) => Navigator.pushNamed(context, '/home'),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'wrong-password') {
+        Util(
+          bgColor: Colors.red,
+          txtColor: Colors.white,
+          text: 'Wrong password',
+        ).showSnack(context);
+      } else if (e.code == 'user-not-found') {
+        Util(
+          bgColor: Colors.red,
+          txtColor: Colors.white,
+          text: 'User not found',
+        ).showSnack(context);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,12 +102,14 @@ class _LoginScreenState extends State<LoginScreen> {
             Column(
               children: [
                 CustomTextField(
+                  controller: email,
                   text: 'Enter your email',
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 CustomTextField(
+                  controller: password,
                   text: 'Enter your password',
                 ),
                 Container(
@@ -82,7 +124,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ],
             ),
-            bButton,
+            MainButton(
+              bgColor: Colors.black,
+              txtColor: Colors.white,
+              btnTxt: 'Login',
+              onPressed: login,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               // ignore: prefer_const_literals_to_create_immutables
