@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:bio_maker/utils/scaffold_msg.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -36,12 +38,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
   }
 
-  MainButton bButton = MainButton(
-    bgColor: Colors.black,
-    txtColor: Colors.white,
-    btnTxt: 'Register',
-    onPressed: createUser(),
-  );
+  // MainButton bButton = MainButton(
+  //   bgColor: Colors.black,
+  //   txtColor: Colors.white,
+  //   btnTxt: 'Register',
+  //   onPressed: createUser(),
+  // );
+  // final Widget ? bButton;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -91,18 +94,25 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(6),
-                          ),
-                        ),
+                            // border: Border.all(color: Colors.grey),
+                            // color: Colors.grey.shade200,
+                            // borderRadius: BorderRadius.all(
+                            //   Radius.circular(6),
+                            // ),
+                            ),
                         // margin: EdgeInsets.symmetric(horizontal: 20),
                         child: TextFormField(
                           showCursor: true,
                           cursorColor: Colors.grey.shade400,
                           cursorHeight: 5,
                           decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Colors.grey.shade200,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10.0)),
+                                borderSide: BorderSide(
+                                    width: 2.5, color: Colors.black)),
                             // labelText: 'dflsadfjlsadkj',
                             contentPadding: EdgeInsets.symmetric(horizontal: 8),
                             hintText: 'Username',
@@ -197,7 +207,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       // ),
                     ],
                   ),
-                  bButton,
+                  MainButton(
+                    bgColor: Colors.black,
+                    txtColor: Colors.white,
+                    btnTxt: 'Register',
+                    onPressed: createUser(),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     // ignore: prefer_const_literals_to_create_immutables
