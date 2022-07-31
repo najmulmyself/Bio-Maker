@@ -92,34 +92,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   Column(
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            // border: Border.all(color: Colors.grey),
-                            // color: Colors.grey.shade200,
-                            // borderRadius: BorderRadius.all(
-                            //   Radius.circular(6),
-                            // ),
-                            ),
-                        // margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: TextFormField(
-                          showCursor: true,
-                          cursorColor: Colors.grey.shade400,
-                          cursorHeight: 5,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.grey.shade200,
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10.0)),
-                                borderSide: BorderSide(
-                                    width: 2.5, color: Colors.black)),
-                            // labelText: 'dflsadfjlsadkj',
-                            contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                            hintText: 'Username',
-                            border: InputBorder.none,
-                          ),
-                        ),
-                      ),
+                      CustomTextField(),
                       SizedBox(
                         height: 20,
                       ),
@@ -265,6 +238,42 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           )
         ],
       )),
+    );
+  }
+}
+
+class CustomTextField extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          // border: Border.all(color: Colors.grey),
+          // color: Colors.grey.shade200,
+          // borderRadius: BorderRadius.all(
+          //   Radius.circular(6),
+          // ),
+          ),
+      // margin: EdgeInsets.symmetric(horizontal: 20),
+      child: TextFormField(
+        showCursor: true,
+        cursorColor: Colors.grey.shade400,
+        cursorHeight: 5,
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.grey.shade200,
+          focusedBorder: OutlineInputBorder(
+              borderRadius:
+                  BorderRadius.all(Radius.circular(10.0)),
+              borderSide: BorderSide(
+                  width: 2.5, color: Colors.black)),
+          // labelText: 'dflsadfjlsadkj',
+          contentPadding: EdgeInsets.symmetric(horizontal: 8),
+          hintText: 'Username',
+          border: InputBorder.none,
+        ),
+      ),
     );
   }
 }
