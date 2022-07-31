@@ -10,6 +10,7 @@ class MainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(vertical: 20),
       height: 50,
       decoration: BoxDecoration(
         color: bgColor,

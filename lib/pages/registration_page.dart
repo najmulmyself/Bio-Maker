@@ -243,8 +243,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 }
 
 class CustomTextField extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -252,7 +250,11 @@ class CustomTextField extends StatelessWidget {
           // border: Border.all(color: Colors.grey),
           // color: Colors.grey.shade200,
           // borderRadius: BorderRadius.all(
-          //   Radius.circular(6),
+          //   Radius.circular(10),
+          // color: Colors.red,
+          // ),
+          // borderRadius: BorderRadius.all(
+          //   Radius.circular(30),
           // ),
           ),
       // margin: EdgeInsets.symmetric(horizontal: 20),
@@ -264,14 +266,22 @@ class CustomTextField extends StatelessWidget {
           filled: true,
           fillColor: Colors.grey.shade200,
           focusedBorder: OutlineInputBorder(
-              borderRadius:
-                  BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(
-                  width: 2.5, color: Colors.black)),
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              borderSide: BorderSide(width: 2.5, color: Colors.black)),
           // labelText: 'dflsadfjlsadkj',
           contentPadding: EdgeInsets.symmetric(horizontal: 8),
           hintText: 'Username',
-          border: InputBorder.none,
+          // border: InputBorder.none,
+
+          // FOLLOWING CODE IS USED TO CREATE A BORDER OF A TEXTFIELD, WITHOUT FOCUS
+
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            borderSide: BorderSide(
+              color: Colors.grey,
+              width: 1.5,
+            ),
+          ),
         ),
       ),
     );
