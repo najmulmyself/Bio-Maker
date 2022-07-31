@@ -30,6 +30,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       if (userCredential != null) {
         final util = Util(text: 'Registration Successfully');
         util.showSnack(context);
+        Navigator.pushNamed(context, '/login');
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
@@ -103,12 +104,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       ),
                       CustomTextField(
                         text: 'Email',
+                        controller: emailController,
                       ),
                       SizedBox(
                         height: 20,
                       ),
                       CustomTextField(
                         text: 'Password',
+                        controller: passwordController,
                       ),
                       SizedBox(
                         height: 20,
@@ -122,7 +125,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     bgColor: Colors.black,
                     txtColor: Colors.white,
                     btnTxt: 'Register',
-                    onPressed: createUser(),
+                    onPressed: createUser,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
