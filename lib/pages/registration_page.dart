@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:async';
+
 import 'package:bio_maker/utils/scaffold_msg.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../component/button.dart';
+import '../component/custom_text_field.dart';
 import '../component/social_button.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -92,92 +95,27 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   Column(
                     children: [
-                      CustomTextField(),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(6),
-                          ),
-                        ),
-                        // margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: TextFormField(
-                          controller: emailController,
-                          showCursor: true,
-                          cursorColor: Colors.grey.shade400,
-                          cursorHeight: 5,
-                          decoration: InputDecoration(
-                            // labelText: 'dflsadfjlsadkj',
-                            contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                            hintText: 'Email',
-
-                            border: InputBorder.none,
-                          ),
-                        ),
+                      CustomTextField(
+                        text: 'Username',
                       ),
                       SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(6),
-                          ),
-                        ),
-                        // margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: TextFormField(
-                          controller: passwordController,
-                          showCursor: true,
-                          cursorColor: Colors.grey.shade400,
-                          cursorHeight: 5,
-                          decoration: InputDecoration(
-                            // labelText: 'dflsadfjlsadkj',
-                            contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                            hintText: 'Password',
-                            border: InputBorder.none,
-                          ),
-                        ),
+                      CustomTextField(
+                        text: 'Email',
                       ),
                       SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(6),
-                          ),
-                        ),
-                        // margin: EdgeInsets.symmetric(horizontal: 20),
-                        child: TextFormField(
-                          showCursor: true,
-                          cursorColor: Colors.grey.shade400,
-                          cursorHeight: 5,
-                          decoration: InputDecoration(
-                            // labelText: 'dflsadfjlsadkj',
-                            contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                            hintText: 'Confirm Password',
-                            border: InputBorder.none,
-                          ),
-                        ),
+                      CustomTextField(
+                        text: 'Password',
                       ),
-                      // Container(
-                      //   margin: EdgeInsets.only(top: 10),
-                      //   alignment: AlignmentDirectional.centerEnd,
-                      //   child: Text(
-                      //     'Forget Password',
-                      //     style: TextStyle(
-                      //       fontSize: 16,
-                      //     ),
-                      //   ),
-                      // ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      CustomTextField(
+                        text: 'Confirm Password',
+                      ),
                     ],
                   ),
                   MainButton(
@@ -238,52 +176,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           )
         ],
       )),
-    );
-  }
-}
-
-class CustomTextField extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          // border: Border.all(color: Colors.grey),
-          // color: Colors.grey.shade200,
-          // borderRadius: BorderRadius.all(
-          //   Radius.circular(10),
-          // color: Colors.red,
-          // ),
-          // borderRadius: BorderRadius.all(
-          //   Radius.circular(30),
-          // ),
-          ),
-      // margin: EdgeInsets.symmetric(horizontal: 20),
-      child: TextFormField(
-        showCursor: true,
-        cursorColor: Colors.grey.shade400,
-        cursorHeight: 5,
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.grey.shade200,
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10.0)),
-              borderSide: BorderSide(width: 2.5, color: Colors.black)),
-          // labelText: 'dflsadfjlsadkj',
-          contentPadding: EdgeInsets.symmetric(horizontal: 8),
-          hintText: 'Username',
-          // border: InputBorder.none,
-
-          // FOLLOWING CODE IS USED TO CREATE A BORDER OF A TEXTFIELD, WITHOUT FOCUS
-
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
-            borderSide: BorderSide(
-              color: Colors.grey,
-              width: 1.5,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
