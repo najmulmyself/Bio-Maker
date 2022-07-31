@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:bio_maker/component/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -60,50 +61,14 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Column(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(6),
-                    ),
-                  ),
-                  // margin: EdgeInsets.symmetric(horizontal: 20),
-                  child: TextFormField(
-                    showCursor: true,
-                    cursorColor: Colors.grey.shade400,
-                    cursorHeight: 5,
-                    decoration: InputDecoration(
-                      // labelText: 'dflsadfjlsadkj',
-                      contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                      hintText: 'Enter your email',
-                      border: InputBorder.none,
-                    ),
-                  ),
+                CustomTextField(
+                  text: 'Enter your email',
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    color: Colors.grey.shade200,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(6),
-                    ),
-                  ),
-                  // margin: EdgeInsets.symmetric(horizontal: 20),
-                  child: TextFormField(
-                    showCursor: true,
-                    cursorColor: Colors.grey.shade400,
-                    cursorHeight: 5,
-                    decoration: InputDecoration(
-                      // labelText: 'dflsadfjlsadkj',
-                      contentPadding: EdgeInsets.symmetric(horizontal: 8),
-                      hintText: 'Enter your password',
-                      border: InputBorder.none,
-                    ),
-                  ),
+                CustomTextField(
+                  text: 'Enter your password',
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 10),

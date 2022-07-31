@@ -42,9 +42,9 @@ class HomePage extends StatelessWidget {
             height: 20,
           ),
           bButton,
-          SizedBox(
-            height: 20,
-          ),
+          // SizedBox(
+          //   height: 20,
+          // ),
           tButton,
         ],
       ),
