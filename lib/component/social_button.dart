@@ -4,12 +4,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class SocialButton extends StatelessWidget {
   final icon;
   final color;
-  SocialButton({this.icon, this.color});
+  final onPressed;
+  SocialButton({this.onPressed, this.icon, this.color});
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
-      width: 110,
+      height: 50,
+      width: 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(10)),
         border: Border.all(color: Colors.grey, width: 1.7),
@@ -21,7 +22,7 @@ class SocialButton extends StatelessWidget {
           color: Colors.black,
         ),
         // size: 45,
-        onPressed: null,
+        onPressed: onPressed,
       ),
     );
   }

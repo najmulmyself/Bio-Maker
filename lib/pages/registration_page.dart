@@ -11,6 +11,8 @@ import '../component/button.dart';
 import '../component/custom_text_field.dart';
 import '../component/social_button.dart';
 
+import 'package:google_sign_in/google_sign_in.dart';
+
 class RegistrationScreen extends StatefulWidget {
   RegistrationScreen({Key? key}) : super(key: key);
 
@@ -23,6 +25,23 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController conPasswordController = TextEditingController();
 
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    final signOut = GoogleSignIn().signOut();
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
   Future<void>? createUser() async {
     try {
       if (passwordController.text == conPasswordController.text) {
@@ -31,7 +50,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 email: emailController.text, password: passwordController.text);
         if (userCredential != null) {
           final util = Util(
-              text: 'Registration Successfull',
+              text: 'Registration Successful',
               bgColor: Colors.green,
               txtColor: Colors.white);
           util.showSnack(context);
@@ -56,6 +75,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance
+        .signOut()
+        .then((value) => print('logout successful'));
   }
 
   // MainButton bButton = MainButton(
@@ -169,10 +194,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         // color: Colors.blue.shade700,
                       ),
                       SocialButton(
+                        onPressed: _signOut,
                         icon: FontAwesomeIcons.apple,
                         // color: Colors.green,
                       ),
                       SocialButton(
+                        onPressed: () {
+                          signInWithGoogle().then(
+                            (value) {
+                              Navigator.pushNamed(context, '/user-page');
+                            },
+                          );
+                        },
                         icon: FontAwesomeIcons.google,
                         // color: Colors.red,
                       ),

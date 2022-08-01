@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bio_maker/pages/registration_page.dart';
+import 'package:bio_maker/pages/user_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => HomePage(),
         '/login': (context) => LoginScreen(),
-        '/registration': (context) => RegistrationScreen()
+        '/registration': (context) => RegistrationScreen(),
+        '/user-page': (context) => UserPage(),
       },
     );
   }

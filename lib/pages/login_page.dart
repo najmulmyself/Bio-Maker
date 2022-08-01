@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../component/button.dart';
 import '../component/social_button.dart';
@@ -27,6 +28,23 @@ class _LoginScreenState extends State<LoginScreen> {
   //   btnTxt: 'Login',
   //   onPressed: null,
   // );
+
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    // final signOut = GoogleSignIn().signOut();
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
 
   Future<void>? login() async {
     try {
@@ -159,6 +177,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   // color: Colors.green,
                 ),
                 SocialButton(
+                  onPressed: () {
+                    signInWithGoogle().then(
+                      (value) {
+                        Navigator.pushNamed(context, '/user-page');
+                      },
+                    );
+                  },
                   icon: FontAwesomeIcons.google,
                   // color: Colors.red,
                 ),
