@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomInkWell extends StatelessWidget {
   final title;
@@ -20,8 +21,12 @@ class CustomInkWell extends StatelessWidget {
             foregroundColor: Colors.black87,
             child: circleAvatarIcon,
           ),
-          title: Text(title),
-          subtitle: subtitle == '' ? null : Text(subtitle),
+          title: Text(
+            title,
+            style: GoogleFonts.lato(),
+          ),
+          subtitle:
+              subtitle == '' ? null : Text(subtitle, style: GoogleFonts.lato()),
           trailing: Icon(Icons.arrow_forward_ios_rounded),
         ),
       ),

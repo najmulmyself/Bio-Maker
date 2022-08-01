@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainButton extends StatelessWidget {
   final bgColor;
@@ -22,10 +23,8 @@ class MainButton extends StatelessWidget {
       width: double.infinity,
       child: MaterialButton(
         onPressed: onPressed,
-        child: Text(
-          btnTxt,
-          style: TextStyle(color: txtColor),
-        ),
+        child: Text(btnTxt,
+            style: GoogleFonts.lato(textStyle: TextStyle(color: txtColor))),
       ),
     );
   }

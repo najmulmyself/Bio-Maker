@@ -6,6 +6,7 @@ import 'package:bio_maker/utils/scaffold_msg.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../component/button.dart';
 import '../component/custom_text_field.dart';
@@ -132,7 +133,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 ),
                 Text(
                   'Welcome back! Glad \n to see you,Again!',
-                  style: TextStyle(fontSize: 34),
+                  style: GoogleFonts.signikaNegative(
+                    textStyle: TextStyle(fontSize: 34),
+                  ),
                 ),
                 Column(
                   children: [
@@ -177,7 +180,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       height: 5,
                       thickness: 20,
                     ),
-                    Text('Or login with'),
+                    Text('Or login with', style: GoogleFonts.lato()),
                     Divider(
                       height: 5,
                       color: Colors.black,
@@ -214,12 +217,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
-                    Text('Already have an account ?'),
+                    Text('Already have an account ?',
+                        style: GoogleFonts.lato()),
                     GestureDetector(
                         onTap: () {
                           Navigator.pushNamed(context, '/login');
                         },
-                        child: Text('Login now')),
+                        child: Text(
+                          'Login now',
+                          style: GoogleFonts.lato(),
+                        )),
                   ],
                 )
               ],

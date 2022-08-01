@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../component/custom_inkWell.dart';
 
@@ -19,10 +20,14 @@ class _ProfileState extends State<Profile> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Profile'),
+            Text(
+              'Profile',
+              style: GoogleFonts.signikaNegative(
+                  textStyle: TextStyle(fontSize: 25)),
+            ),
             Card(
               elevation: 5,
               color: Colors.black87,
@@ -41,11 +46,15 @@ class _ProfileState extends State<Profile> {
                         ),
                         title: Text(
                           'Your name here..',
-                          style: TextStyle(color: Colors.white),
+                          style: GoogleFonts.lato(
+                            textStyle: TextStyle(color: Colors.white),
+                          ),
                         ),
                         subtitle: Text(
                           '@username',
-                          style: TextStyle(color: Colors.grey),
+                          style: GoogleFonts.lato(
+                            textStyle: TextStyle(color: Colors.grey),
+                          ),
                         ),
                         trailing: Icon(
                           Icons.edit,
@@ -83,9 +92,10 @@ class _ProfileState extends State<Profile> {
             SizedBox(
               height: 20,
             ),
-            Text('More'),
-            SizedBox(
-              height: 20,
+            Text(
+              'More',
+              style: GoogleFonts.signikaNegative(
+                  textStyle: TextStyle(fontSize: 25)),
             ),
             Card(
               elevation: 5,
