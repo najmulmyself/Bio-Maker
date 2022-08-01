@@ -141,8 +141,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   alignment: AlignmentDirectional.centerEnd,
                   child: Text(
                     'Forget Password',
-                    style: TextStyle(
-                      fontSize: 16,
+                    style: GoogleFonts.lato(
+                      textStyle: TextStyle(
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ),
@@ -163,7 +165,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 5,
                   thickness: 20,
                 ),
-                Text('Or login with'),
+                Text(
+                  'Or login with',
+                  style: GoogleFonts.lato(),
+                ),
                 Divider(
                   height: 5,
                   color: Colors.black,
@@ -199,13 +204,24 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               // ignore: prefer_const_literals_to_create_immutables
               children: [
-                Text('Don\'t have an account ?'),
+                Text(
+                  'Don\'t have an account ?',
+                  style: GoogleFonts.lato(),
+                ),
                 GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, '/registration');
                   },
-                  child: Text('Register now'),
-                ),
+                  child: Container(
+                    margin: EdgeInsets.all(5),
+                    height: 15,
+                    color: Colors.black,
+                    child: Text('Register now',
+                        style: GoogleFonts.lato(
+                          textStyle: TextStyle(color: Colors.white),
+                        )),
+                  ),
+                )
               ],
             )
           ],

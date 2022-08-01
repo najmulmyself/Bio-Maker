@@ -223,9 +223,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         onTap: () {
                           Navigator.pushNamed(context, '/login');
                         },
-                        child: Text(
-                          'Login now',
-                          style: GoogleFonts.lato(),
+                        child: Container(
+                          margin: EdgeInsets.all(5),
+                          height: 15,
+                          color: Colors.black,
+                          child: Text('Login now',
+                              style: GoogleFonts.lato(
+                                textStyle: TextStyle(color: Colors.white),
+                              )),
                         )),
                   ],
                 )
