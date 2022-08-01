@@ -13,22 +13,36 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Profile'),
-          Card(
-            color: Colors.black,
-            child: InkWell(
-              splashColor: Colors.grey.shade400,
-              onTap: () {},
-              child: Container(
-                height: 100,
-                width: double.infinity,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Profile'),
+            Card(
+              color: Colors.black87,
+              child: InkWell(
+                splashColor: Colors.grey.shade400,
+                onTap: () {},
+                child: SizedBox(
+                    height: 100,
+                    width: double.infinity,
+                    child: Center(
+                      child: ListTile(
+                        leading: CircleAvatar(),
+                        title: Text('Your name'),
+                        subtitle: Text('@username'),
+                        trailing: Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
