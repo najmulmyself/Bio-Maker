@@ -34,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
+    print(googleUser?.photoUrl);
 
     // final signOut = GoogleSignIn().signOut();
     // Create a new credential
@@ -41,6 +42,8 @@ class _LoginScreenState extends State<LoginScreen> {
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
+
+    print(credential);
 
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
@@ -180,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     signInWithGoogle().then(
                       (value) {
-                        Navigator.pushNamed(context, '/user-page');
+                        Navigator.pushNamed(context, '/profile');
                       },
                     );
                   },
@@ -195,10 +198,11 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Text('Don\'t have an account ?'),
                 GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/registration');
-                    },
-                    child: Text('Register now')),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/registration');
+                  },
+                  child: Text('Register now'),
+                ),
               ],
             )
           ],

@@ -9,6 +9,9 @@ class UserPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Users'),
       ),
+      body: Center(
+        child: Text('Users list will be shown here....'),
+      ),
     );
   }
 }
