@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../component/custom_inkWell.dart';
 
 class Profile extends StatefulWidget {
   Profile({Key? key}) : super(key: key);
@@ -16,7 +19,7 @@ class _ProfileState extends State<Profile> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Profile'),
@@ -32,8 +35,9 @@ class _ProfileState extends State<Profile> {
                     child: Center(
                       child: ListTile(
                         leading: CircleAvatar(
-                          backgroundColor: Colors.white,
+                          backgroundColor: Colors.grey.shade200,
                           radius: 30,
+                          child: FaIcon(FontAwesomeIcons.userGraduate),
                         ),
                         title: Text(
                           'Your name here..',
@@ -41,7 +45,7 @@ class _ProfileState extends State<Profile> {
                         ),
                         subtitle: Text(
                           '@username',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.grey),
                         ),
                         trailing: Icon(
                           Icons.edit,
@@ -57,20 +61,47 @@ class _ProfileState extends State<Profile> {
             Card(
               elevation: 5,
               child: SizedBox(
-                height: 400,
+                // height: 400,
                 child: Column(
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
-                    InkWell(
-                      splashColor: Colors.grey,
-                      onTap: () {},
-                      child: ListTile(
-                        leading: CircleAvatar(),
-                        title: Text('My Account'),
-                        subtitle: Text('make changes to your account'),
-                        trailing: Icon(Icons.arrow_forward_ios_rounded),
-                      ),
-                    )
+                    CustomInkWell(
+                      circleAvatarIcon: FaIcon(FontAwesomeIcons.user),
+                      title: 'My Account',
+                      subtitle: 'Make changes to your account',
+                    ),
+                    CustomInkWell(
+                      circleAvatarIcon:
+                          FaIcon(FontAwesomeIcons.rightFromBracket),
+                      title: 'Log out',
+                      subtitle: 'Further secure your account for safety',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text('More'),
+            SizedBox(
+              height: 20,
+            ),
+            Card(
+              elevation: 5,
+              child: SizedBox(
+                child: Column(
+                  children: [
+                    CustomInkWell(
+                      circleAvatarIcon: FaIcon(FontAwesomeIcons.bell),
+                      title: 'Help & support',
+                      subtitle: '',
+                    ),
+                    CustomInkWell(
+                      circleAvatarIcon: FaIcon(FontAwesomeIcons.heart),
+                      title: 'About App',
+                      subtitle: '',
+                    ),
                   ],
                 ),
               ),
