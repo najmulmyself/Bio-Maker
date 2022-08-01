@@ -21,6 +21,7 @@ class _ProfileState extends State<Profile> {
           children: [
             Text('Profile'),
             Card(
+              elevation: 5,
               color: Colors.black87,
               child: InkWell(
                 splashColor: Colors.grey.shade400,
@@ -30,15 +31,48 @@ class _ProfileState extends State<Profile> {
                     width: double.infinity,
                     child: Center(
                       child: ListTile(
-                        leading: CircleAvatar(),
-                        title: Text('Your name'),
-                        subtitle: Text('@username'),
+                        leading: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 30,
+                        ),
+                        title: Text(
+                          'Your name here..',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        subtitle: Text(
+                          '@username',
+                          style: TextStyle(color: Colors.white),
+                        ),
                         trailing: Icon(
                           Icons.edit,
                           color: Colors.white,
                         ),
                       ),
                     )),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Card(
+              elevation: 5,
+              child: SizedBox(
+                height: 400,
+                child: Column(
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    InkWell(
+                      splashColor: Colors.grey,
+                      onTap: () {},
+                      child: ListTile(
+                        leading: CircleAvatar(),
+                        title: Text('My Account'),
+                        subtitle: Text('make changes to your account'),
+                        trailing: Icon(Icons.arrow_forward_ios_rounded),
+                      ),
+                    )
+                  ],
+                ),
               ),
             )
           ],
