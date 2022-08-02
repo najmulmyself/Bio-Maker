@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
             txtColor: Colors.white);
         util.showSnack(context);
       }).then(
-        (value) => Navigator.pushNamed(context, '/home'),
+        (value) => Navigator.pushNamed(context, '/profile'),
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {

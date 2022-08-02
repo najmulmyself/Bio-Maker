@@ -1,10 +1,28 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import '../component/button.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  // @override
+  // Future<void> initState() async {
+  //   super.initState();
+  //   final user = await FirebaseAuth.instance.currentUser;
+  //   if (user != null) {
+  //     Navigator.pushNamed(context, '/registration');
+  //   } else {
+  //     // Navigator.pushNamed(context, '/registration');
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     void loginScreen() {
