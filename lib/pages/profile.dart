@@ -18,6 +18,18 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        onTap: (value) {
+          
+          if(value == currentIndex){
+            
+          }
+          else if (value == 0) {
+            Navigator.pushNamed(context, '/user-page');
+          } else if (value == 1) {
+            Navigator.pushNamed(context, '/profile');
+          }
+        },
         elevation: 0,
         // selectedItemColor: Colors.red,
         items: [
