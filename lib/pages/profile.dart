@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,6 +17,24 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
+        // selectedItemColor: Colors.red,
+        items: [
+          BottomNavigationBarItem(
+              icon: FaIcon(
+                FontAwesomeIcons.house,
+                color: Colors.black,
+              ),
+              label: 'Home'),
+          BottomNavigationBarItem(
+              icon: FaIcon(
+                FontAwesomeIcons.user,
+                color: Colors.black,
+              ),
+              label: 'Profile'),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
