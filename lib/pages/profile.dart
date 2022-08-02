@@ -18,19 +18,19 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.yellow,
         currentIndex: 0,
         onTap: (value) {
-          
-          if(value == currentIndex){
-            
-          }
-          else if (value == 0) {
-            Navigator.pushNamed(context, '/user-page');
-          } else if (value == 1) {
-            Navigator.pushNamed(context, '/profile');
+          {
+            if (value == 0) {
+              Navigator.pushNamed(context, '/user-page');
+            } else if (value == 1) {
+              Navigator.pushNamed(context, '/profile');
+            }
           }
         },
-        elevation: 0,
+        elevation: 1,
         // selectedItemColor: Colors.red,
         items: [
           BottomNavigationBarItem(
@@ -105,6 +105,7 @@ class _ProfileState extends State<Profile> {
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     CustomInkWell(
+                      routeName: '/home',
                       circleAvatarIcon: FaIcon(FontAwesomeIcons.user),
                       title: 'My Account',
                       subtitle: 'Make changes to your account',
