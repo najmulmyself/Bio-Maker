@@ -81,6 +81,8 @@ class _LoginScreenState extends State<LoginScreen> {
     } catch (e) {
       print(e);
     }
+    final auth = FirebaseAuth.instance;
+    print('loginPage: ${auth.currentUser}');
   }
 
   @override

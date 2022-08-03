@@ -5,17 +5,18 @@ class CustomInkWell extends StatelessWidget {
   final title;
   final subtitle;
   final circleAvatarIcon;
-  String? routeName;
-  CustomInkWell(
-      {this.routeName, this.circleAvatarIcon, this.subtitle, this.title});
+  var onTap;
+  CustomInkWell({this.onTap, this.circleAvatarIcon, this.subtitle, this.title});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.grey,
-      onTap: () {
-                        Navigator.pushNamed(context, routeName!);
-                      },
+      // onTap: () {
+      //   // Navigator.pushNamed(context, onPressed!);
+      //   // onPressed;
+      // },
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: ListTile(

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:bio_maker/pages/profile.dart';
 import 'package:bio_maker/pages/user_page.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +29,7 @@ class _LoginSuccessState extends State<LoginSuccess> {
         // unselectedItemColor: Colors.yellow,
         currentIndex: _currentIndex,
         onTap: (value) {
+          
           setState(() {
             _currentIndex = value;
           });

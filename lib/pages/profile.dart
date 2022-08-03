@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,39 +16,23 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  // int _currentIndex = 0;
+  final auth = FirebaseAuth.instance;
+  Future? _signOut() async {
+    final user = auth.currentUser?.email;
+    print('1: $user');
+    await auth.signOut();
+    Navigator.pushNamed(context, '/home');
+    print('2: $user ');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // bottomNavigationBar: BottomNavigationBar(
-      //   showUnselectedLabels: false,
-      //   selectedItemColor: Colors.black,
-      //   selectedFontSize: 15,
-      //   // unselectedItemColor: Colors.yellow,
-      //   currentIndex: _currentIndex,
-      //   onTap: (value) {
-      //     setState(() {
-      //       _currentIndex = value;
+    Function? myacc() {
+      // Navigator.pushNamed(context, '/login');
+      print(auth.currentUser?.email);
+    }
 
-      //     });
-      //   },
-      //   elevation: 1,
-      //   // selectedItemColor: Colors.red,
-      //   items: [
-      //     BottomNavigationBarItem(
-      //         icon: FaIcon(
-      //           FontAwesomeIcons.house,
-      //           color: Colors.black,
-      //         ),
-      //         label: 'Home'),
-      //     BottomNavigationBarItem(
-      //         icon: FaIcon(
-      //           FontAwesomeIcons.user,
-      //           color: Colors.black,
-      //         ),
-      //         label: 'Profile'),
-      //   ],
-      // ),
+    return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(
@@ -102,15 +88,16 @@ class _ProfileState extends State<Profile> {
               child: SizedBox(
                 // height: 400,
                 child: Column(
-                  // ignore: prefer_const_literals_to_create_immutables
                   children: [
                     CustomInkWell(
-                      routeName: '/home',
+                      // onPressed: '/home',
+                      onTap: myacc,
                       circleAvatarIcon: FaIcon(FontAwesomeIcons.user),
                       title: 'My Account',
                       subtitle: 'Make changes to your account',
                     ),
                     CustomInkWell(
+                      onTap: _signOut,
                       circleAvatarIcon:
                           FaIcon(FontAwesomeIcons.rightFromBracket),
                       title: 'Log out',
