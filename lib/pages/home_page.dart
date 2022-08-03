@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    isLoggedIn();
+    isLoggedIn(); // NEED TO CALL SEPERATE FUNCTION BCZ INITS CANT BEAR ASYNC
   }
 
   Future? isLoggedIn() async {
