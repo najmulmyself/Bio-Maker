@@ -24,6 +24,19 @@ class _HomePageState extends State<HomePage> {
   // }
 
   @override
+  void initState() {
+    super.initState();
+    isLoggedIn();
+  }
+
+  Future? isLoggedIn() async {
+    final auth = await FirebaseAuth.instance;
+    if (auth.currentUser != null) {
+      Navigator.pushNamed(context, '/login-success');
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     void loginScreen() {
       Navigator.pushNamed(context, '/login');
