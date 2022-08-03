@@ -14,21 +14,19 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.red,
-        unselectedItemColor: Colors.yellow,
-        currentIndex: 0,
+        selectedItemColor: Colors.black,
+        selectedFontSize: 15,
+        // unselectedItemColor: Colors.yellow,
+        currentIndex: _currentIndex,
         onTap: (value) {
-          {
-            if (value == 0) {
-              Navigator.pushNamed(context, '/user-page');
-            } else if (value == 1) {
-              Navigator.pushNamed(context, '/profile');
-            }
-          }
+          setState(() {
+            _currentIndex = value;
+          });
         },
         elevation: 1,
         // selectedItemColor: Colors.red,
