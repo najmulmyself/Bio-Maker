@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:bio_maker/component/login_success.dart';
 import 'package:bio_maker/pages/profile.dart';
 import 'package:bio_maker/pages/registration_page.dart';
 import 'package:bio_maker/pages/user_page.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/registration': (context) => RegistrationScreen(),
         '/user-page': (context) => UserPage(),
         '/profile': (context) => Profile(),
+        '/login-success':(context) => LoginSuccess(),
       },
     );
   }

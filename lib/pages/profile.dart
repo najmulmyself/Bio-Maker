@@ -14,37 +14,39 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  int _currentIndex = 0;
+  // int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
-        selectedFontSize: 15,
-        // unselectedItemColor: Colors.yellow,
-        currentIndex: _currentIndex,
-        onTap: (value) {
-          setState(() {
-            _currentIndex = value;
-          });
-        },
-        elevation: 1,
-        // selectedItemColor: Colors.red,
-        items: [
-          BottomNavigationBarItem(
-              icon: FaIcon(
-                FontAwesomeIcons.house,
-                color: Colors.black,
-              ),
-              label: 'Home'),
-          BottomNavigationBarItem(
-              icon: FaIcon(
-                FontAwesomeIcons.user,
-                color: Colors.black,
-              ),
-              label: 'Profile'),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   showUnselectedLabels: false,
+      //   selectedItemColor: Colors.black,
+      //   selectedFontSize: 15,
+      //   // unselectedItemColor: Colors.yellow,
+      //   currentIndex: _currentIndex,
+      //   onTap: (value) {
+      //     setState(() {
+      //       _currentIndex = value;
+
+      //     });
+      //   },
+      //   elevation: 1,
+      //   // selectedItemColor: Colors.red,
+      //   items: [
+      //     BottomNavigationBarItem(
+      //         icon: FaIcon(
+      //           FontAwesomeIcons.house,
+      //           color: Colors.black,
+      //         ),
+      //         label: 'Home'),
+      //     BottomNavigationBarItem(
+      //         icon: FaIcon(
+      //           FontAwesomeIcons.user,
+      //           color: Colors.black,
+      //         ),
+      //         label: 'Profile'),
+      //   ],
+      // ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Column(

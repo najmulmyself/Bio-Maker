@@ -204,7 +204,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       onPressed: () {
                         signInWithGoogle().then(
                           (value) {
-                            Navigator.pushNamed(context, '/profile');
+                            Navigator.pushNamed(context, '/login-success');
                           },
                         );
                       },
