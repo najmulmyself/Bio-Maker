@@ -19,17 +19,14 @@ class _ProfileState extends State<Profile> {
   final auth = FirebaseAuth.instance;
   Future? _signOut() async {
     final user = auth.currentUser?.email;
-    print('1: $user');
     await auth.signOut();
     Navigator.pushNamed(context, '/home');
-    print('2: $user ');
   }
 
   @override
   Widget build(BuildContext context) {
     Function? myacc() {
-      // Navigator.pushNamed(context, '/login');
-      print(auth.currentUser?.email);
+      Navigator.pushNamed(context, '/profile-info');
     }
 
     return Scaffold(

@@ -2,6 +2,7 @@
 
 import 'package:bio_maker/component/login_success.dart';
 import 'package:bio_maker/pages/profile.dart';
+import 'package:bio_maker/pages/profile_info.dart';
 import 'package:bio_maker/pages/registration_page.dart';
 import 'package:bio_maker/pages/user_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/user-page': (context) => UserPage(),
         '/profile': (context) => Profile(),
         '/login-success':(context) => LoginSuccess(),
+        '/profile-info':(context) => ProfileInfo()
       },
     );
   }
