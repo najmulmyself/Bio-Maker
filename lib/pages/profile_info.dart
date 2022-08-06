@@ -71,7 +71,8 @@ class ProfileInfo extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       borderSide: BorderSide(width: 2.5, color: Colors.black)),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 8, vertical: 15),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.0),
                     borderSide: BorderSide(
