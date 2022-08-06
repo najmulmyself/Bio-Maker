@@ -56,16 +56,9 @@ class ProfileInfo extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              // PhoneNumberInput(
-              //   initialCountry: 'BAN',
-              //   locale: 'bn',
-              //   showSelectedFlag: true,
-              //   hint: 'must be 10 digit',
-              //   allowPickFromContacts: false,
-              //   enabledBorder: OutlineInputBorder(),
-              // ),
               IntlPhoneField(
                 decoration: InputDecoration(
+                  hintText: 'Enter your phone number',
                   filled: true,
                   fillColor: Colors.grey.shade200,
                   focusedBorder: OutlineInputBorder(
@@ -82,7 +75,21 @@ class ProfileInfo extends StatelessWidget {
                   ),
                 ),
                 initialCountryCode: 'BAN',
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              // ignore: prefer_const_literals_to_create_immutables
+              DropdownButton(items: [
+                DropdownMenuItem(
+                  child: Text('Male'),
+                  value: Text('Male'),
+                ),
+                DropdownMenuItem(
+                  child: Text('Female'),
+                  value: Text('Female'),
+                ),
+              ], onChanged: null)
             ],
           ),
         ),
