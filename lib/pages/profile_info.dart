@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bio_maker/component/custom_text_field.dart';
+import 'package:extended_phone_number_input/phone_number_input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,9 +41,23 @@ class ProfileInfo extends StatelessWidget {
               ),
               Text('Full name'),
               Text('@username'),
-              CustomTextField(),
-              CustomTextField(),
-              CustomTextField(),
+              SizedBox(
+                height: 20,
+              ),
+              CustomTextField(
+                text: 'What\'s your first name ?',
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              CustomTextField(text: 'And your last name ?'),
+              SizedBox(
+                height: 20,
+              ),
+              PhoneNumberInput(
+                initialCountry: 'BAN',
+                locale: 'bn',
+              )
             ],
           ),
         ),
