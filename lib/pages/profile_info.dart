@@ -4,6 +4,8 @@ import 'package:bio_maker/component/custom_text_field.dart';
 import 'package:extended_phone_number_input/phone_number_input.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({Key? key}) : super(key: key);
@@ -54,9 +56,31 @@ class ProfileInfo extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              PhoneNumberInput(
-                initialCountry: 'BAN',
-                locale: 'bn',
+              // PhoneNumberInput(
+              //   initialCountry: 'BAN',
+              //   locale: 'bn',
+              //   showSelectedFlag: true,
+              //   hint: 'must be 10 digit',
+              //   allowPickFromContacts: false,
+              //   enabledBorder: OutlineInputBorder(),
+              // ),
+              IntlPhoneField(
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(width: 2.5, color: Colors.black)),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Colors.grey,
+                      width: 1.5,
+                    ),
+                  ),
+                ),
+                initialCountryCode: 'BAN',
               )
             ],
           ),

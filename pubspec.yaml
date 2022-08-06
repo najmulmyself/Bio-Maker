@@ -39,6 +39,8 @@ dependencies:
   google_sign_in: ^5.4.0
   google_fonts: ^3.0.1
   extended_phone_number_input: ^1.0.2
+  intl_phone_number_input: ^0.7.0+2
+  intl_phone_field: ^3.1.0
 
 dev_dependencies:
   flutter_test:
