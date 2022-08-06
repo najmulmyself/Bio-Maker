@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:bio_maker/component/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,6 +26,26 @@ class ProfileInfo extends StatelessWidget {
           ),
         ),
         centerTitle: true,
+      ),
+      body: Container(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('assets/images/human.png'),
+              ),
+              Text('Full name'),
+              Text('@username'),
+              CustomTextField(),
+              CustomTextField(),
+              CustomTextField(),
+            ],
+          ),
+        ),
       ),
     );
   }
