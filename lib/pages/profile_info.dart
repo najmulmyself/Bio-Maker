@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:bio_maker/component/custom_text_field.dart';
 import 'package:extended_phone_number_input/phone_number_input.dart';
@@ -7,9 +7,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-class ProfileInfo extends StatelessWidget {
-  const ProfileInfo({Key? key}) : super(key: key);
+class ProfileInfo extends StatefulWidget {
+  @override
+  State<ProfileInfo> createState() => _ProfileInfoState();
+}
 
+class _ProfileInfoState extends State<ProfileInfo> {
+  String? selectedItem;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,16 +84,36 @@ class ProfileInfo extends StatelessWidget {
                 height: 20,
               ),
               // ignore: prefer_const_literals_to_create_immutables
-              DropdownButton(items: [
-                DropdownMenuItem(
-                  child: Text('Male'),
-                  value: Text('Male'),
+              Container(
+                height: 45,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  border: Border.all(width: 0.9),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                DropdownMenuItem(
-                  child: Text('Female'),
-                  value: Text('Female'),
+                child: DropdownButtonHideUnderline(
+                  // WIDGET FOR HIDING UNDERLINE IN DROPDOWNBTN
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: DropdownButton(
+                        // value: '',
+                        hint: Text('Select your gender'),
+                        value: selectedItem,
+                        items: [
+                          DropdownMenuItem(
+                            child: Text('Male'),
+                            value: Text('Male'),
+                          ),
+                          DropdownMenuItem(
+                            child: Text('Female'),
+                            value: Text('Female'),
+                          ),
+                        ],
+                        onChanged: null),
+                  ),
                 ),
-              ], onChanged: null)
+              ),
             ],
           ),
         ),
