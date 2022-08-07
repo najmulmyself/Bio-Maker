@@ -7,6 +7,7 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:jiffy/jiffy.dart';
 
 class ProfileInfo extends StatefulWidget {
   @override
@@ -20,12 +21,13 @@ class _ProfileInfoState extends State<ProfileInfo> {
 
   var selectedDate;
 
-  
-
-
+  parsingDate() {
+    return Jiffy(selectedDate).format("MMMM do yyyy");
+  }
 
   @override
   Widget build(BuildContext context) {
+    final parsedDate = parsingDate();
 
     return Scaffold(
       appBar: AppBar(
@@ -162,23 +164,28 @@ class _ProfileInfoState extends State<ProfileInfo> {
               ),
               GestureDetector(
                 onTap: () {
-                  DatePicker.showDatePicker(context,
-                      locale: LocaleType.en,
-                      showTitleActions: true,
-                      theme: DatePickerTheme(
-                        doneStyle: TextStyle(color: Colors.black),
-                        itemStyle: TextStyle(color: Colors.black),
-                      ),
-                      // onChanged: null,
-                      onConfirm: (date) {
-                    setState(() {
-                      selectedDate = date;
-                    });
-                  }, onChanged: (date) {
-                    setState(() {
-                      selectedDate = date;
-                    });
-                  }, currentTime: DateTime.now());
+                  DatePicker.showDatePicker(
+                    context,
+                    locale: LocaleType.en,
+                    showTitleActions: true,
+                    theme: DatePickerTheme(
+                      doneStyle: TextStyle(color: Colors.black),
+                      itemStyle: TextStyle(color: Colors.black),
+                    ),
+                    // onChanged: null,
+                    onConfirm: (date) {
+                      setState(() {
+                        selectedDate = date;
+                      });
+                    },
+                    onCancel: null,
+                    onChanged: (date) {
+                      setState(() {
+                        date;
+                      });
+                    },
+                    // currentTime: DateTime.now(),
+                  );
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
@@ -195,7 +202,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                       Text(
                         selectedDate == null
                             ? 'What is your date of birth ?'
-                            : selectedDate.toString(),
+                            : parsedDate.toString(),
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(color: Colors.grey.shade700)),
                       ),
