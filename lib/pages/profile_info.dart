@@ -3,6 +3,7 @@
 import 'package:bio_maker/component/custom_text_field.dart';
 import 'package:extended_phone_number_input/phone_number_input.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
@@ -13,7 +14,9 @@ class ProfileInfo extends StatefulWidget {
 }
 
 class _ProfileInfoState extends State<ProfileInfo> {
-  String? selectedItem;
+  String? selectedItem = 'Male';
+
+  var items = ['Male', 'Female'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,8 +48,27 @@ class _ProfileInfoState extends State<ProfileInfo> {
                 radius: 50,
                 backgroundImage: AssetImage('assets/images/human.png'),
               ),
-              Text('Full name'),
-              Text('@username'),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Full name',
+                style: GoogleFonts.lato(
+                    textStyle:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+              ),
+              // SizedBox(
+              //   height: 15,
+              // ),
+              Text(
+                '@username',
+                style: GoogleFonts.lato(
+                  textStyle: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey.shade600,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
               SizedBox(
                 height: 20,
               ),
@@ -63,6 +85,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
               IntlPhoneField(
                 decoration: InputDecoration(
                   hintText: 'Enter your phone number',
+                  hintStyle: GoogleFonts.lato(),
                   filled: true,
                   fillColor: Colors.grey.shade200,
                   focusedBorder: OutlineInputBorder(
@@ -89,7 +112,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade200,
-                  border: Border.all(width: 0.9),
+                  border: Border.all(width: 0.9, color: Colors.grey.shade700),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: DropdownButtonHideUnderline(
@@ -98,22 +121,63 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: DropdownButton(
                         // value: '',
-                        hint: Text('Select your gender'),
+                        hint: Text(
+                          'Select your gender',
+                          style: GoogleFonts.lato(
+                            textStyle: TextStyle(color: Colors.grey.shade700),
+                          ),
+                        ),
                         value: selectedItem,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text('Male'),
-                            value: Text('Male'),
-                          ),
-                          DropdownMenuItem(
-                            child: Text('Female'),
-                            value: Text('Female'),
-                          ),
-                        ],
-                        onChanged: null),
+                        items: items.map(
+                          (item) {
+                            return DropdownMenuItem(
+                              child: Text(
+                                item,
+                                style: GoogleFonts.lato(
+                                    textStyle:
+                                        TextStyle(color: Colors.grey.shade700)),
+                              ),
+                              value: item,
+                            );
+                          },
+                        ).toList(),
+                        onChanged: (String? value) {
+                          setState(() {
+                            selectedItem = value;
+                          });
+                        }),
                   ),
                 ),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              GestureDetector(
+                onTap: () {
+                  DatePicker.showDatePicker(context, showTitleActions: true);
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                  height: 45,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    border: Border.all(width: 0.9, color: Colors.grey.shade700),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'What is your date of birth ?',
+                        style: GoogleFonts.lato(
+                            textStyle: TextStyle(color: Colors.grey.shade700)),
+                      ),
+                      Icon(Icons.calendar_month_rounded)
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),

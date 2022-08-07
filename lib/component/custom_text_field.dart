@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? text;
@@ -21,6 +22,7 @@ class CustomTextField extends StatelessWidget {
               borderSide: BorderSide(width: 2.5, color: Colors.black)),
           contentPadding: EdgeInsets.symmetric(horizontal: 8),
           hintText: text,
+          hintStyle: GoogleFonts.lato(),
           // border: InputBorder.none,
 
           // FOLLOWING CODE IS USED TO CREATE A BORDER OF A TEXTFIELD, WITHOUT FOCUS
