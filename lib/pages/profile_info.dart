@@ -17,8 +17,16 @@ class _ProfileInfoState extends State<ProfileInfo> {
   String? selectedItem = 'Male';
 
   var items = ['Male', 'Female'];
+
+  var selectedDate;
+
+  
+
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -154,7 +162,23 @@ class _ProfileInfoState extends State<ProfileInfo> {
               ),
               GestureDetector(
                 onTap: () {
-                  DatePicker.showDatePicker(context, showTitleActions: true);
+                  DatePicker.showDatePicker(context,
+                      locale: LocaleType.en,
+                      showTitleActions: true,
+                      theme: DatePickerTheme(
+                        doneStyle: TextStyle(color: Colors.black),
+                        itemStyle: TextStyle(color: Colors.black),
+                      ),
+                      // onChanged: null,
+                      onConfirm: (date) {
+                    setState(() {
+                      selectedDate = date;
+                    });
+                  }, onChanged: (date) {
+                    setState(() {
+                      selectedDate = date;
+                    });
+                  }, currentTime: DateTime.now());
                 },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
@@ -169,7 +193,9 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'What is your date of birth ?',
+                        selectedDate == null
+                            ? 'What is your date of birth ?'
+                            : selectedDate.toString(),
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(color: Colors.grey.shade700)),
                       ),

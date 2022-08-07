@@ -29,6 +29,15 @@ class _HomePageState extends State<HomePage> {
     isLoggedIn(); // NEED TO CALL SEPERATE FUNCTION BCZ INITS CANT BEAR ASYNC
   }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+
+    // DONT KNOW WHY TO USE DISPOSE
+    isLoggedIn();
+    super.dispose();
+  }
+
   Future? isLoggedIn() async {
     final auth = await FirebaseAuth.instance;
     if (auth.currentUser != null) {
