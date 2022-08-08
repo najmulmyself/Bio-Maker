@@ -43,6 +43,7 @@ dependencies:
   intl_phone_field: ^3.1.0
   flutter_datetime_picker: ^1.5.1
   jiffy: ^5.0.0
+  cloud_firestore: ^3.4.3
 
 dev_dependencies:
   flutter_test:

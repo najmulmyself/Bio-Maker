@@ -2,6 +2,7 @@
 
 import 'package:bio_maker/component/button.dart';
 import 'package:bio_maker/component/custom_text_field.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +20,27 @@ class _ProfileInfoState extends State<ProfileInfo> {
   var items = ['Male', 'Female'];
 
   var selectedDate;
+
+  String? firstName;
+  String? lastName;
+  String? phoneNumber;
+  String? gender;
+  String? birthDate;
+
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  Future<void>? addProfile() {
+    return users
+        .add({
+          'FirstName': firstName,
+          'LastName': lastName,
+          'Phone': phoneNumber,
+          'Gender': gender,
+          'BirthDate': birthDate,
+        })
+        .then((value) => print('Profile added'))
+        .catchError((err) => print(err));
+  }
 
   parsingDate() {
     return Jiffy(selectedDate).format("MMMM do yyyy");
