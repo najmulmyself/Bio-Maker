@@ -46,7 +46,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
           'Gender': selectedItem,
           'BirthDate': parsingDate(),
         })
-        .then((value) => print('Profile added'))
+        .then((value) => print('PROFILE ADDED SUCCESSFULLY'))
         .catchError((err) => print(err));
   }
 
