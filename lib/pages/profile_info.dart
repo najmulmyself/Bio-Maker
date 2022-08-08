@@ -27,16 +27,24 @@ class _ProfileInfoState extends State<ProfileInfo> {
   String? gender;
   String? birthDate;
 
+  TextEditingController fName = TextEditingController();
+  TextEditingController lName = TextEditingController();
+  TextEditingController phone = TextEditingController();
+
   CollectionReference users = FirebaseFirestore.instance.collection('users');
 
   Future<void>? addProfile() {
+    firstName = fName.text;
+    lastName = lName.text;
+    phoneNumber = phone.text;
+
     return users
         .add({
           'FirstName': firstName,
           'LastName': lastName,
           'Phone': phoneNumber,
-          'Gender': gender,
-          'BirthDate': birthDate,
+          'Gender': selectedItem,
+          'BirthDate': parsingDate(),
         })
         .then((value) => print('Profile added'))
         .catchError((err) => print(err));
@@ -106,16 +114,21 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     height: 20,
                   ),
                   CustomTextField(
+                    controller: fName,
                     text: 'What\'s your first name ?',
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  CustomTextField(text: 'And your last name ?'),
+                  CustomTextField(
+                    text: 'And your last name ?',
+                    controller: lName,
+                  ),
                   SizedBox(
                     height: 20,
                   ),
                   IntlPhoneField(
+                    controller: phone,
                     decoration: InputDecoration(
                       hintText: 'Enter your phone number',
                       hintStyle: GoogleFonts.lato(),
@@ -247,7 +260,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     bgColor: Colors.black,
                     txtColor: Colors.white,
                     btnTxt: 'Update profile',
-                    onPressed: null,
+                    onPressed: addProfile,
                   )
                 ],
               ),
