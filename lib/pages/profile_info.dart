@@ -3,6 +3,7 @@
 import 'package:bio_maker/component/button.dart';
 import 'package:bio_maker/component/custom_text_field.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,11 +11,27 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:jiffy/jiffy.dart';
 
 class ProfileInfo extends StatefulWidget {
+  final uid;
+  ProfileInfo({this.uid});
   @override
   State<ProfileInfo> createState() => _ProfileInfoState();
 }
 
 class _ProfileInfoState extends State<ProfileInfo> {
+  // var uid = widget.uid;
+  // Function? getUid() {
+  //   final auth = FirebaseAuth.instance;
+  //   uid = auth.currentUser?.uid;
+  //   return uid;
+  // }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    // getUid();
+  }
+
   String? selectedItem = 'Male';
 
   var items = ['Male', 'Female'];
@@ -31,7 +48,8 @@ class _ProfileInfoState extends State<ProfileInfo> {
   TextEditingController lName = TextEditingController();
   TextEditingController phone = TextEditingController();
 
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  DocumentReference users =
+      FirebaseFirestore.instance.collection('users').doc(uid);
 
   Future<void>? addProfile() {
     firstName = fName.text;
@@ -39,7 +57,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
     phoneNumber = phone.text;
 
     return users
-        .add({
+        .set({
           'FirstName': firstName,
           'LastName': lastName,
           'Phone': phoneNumber,

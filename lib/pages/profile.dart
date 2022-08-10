@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:bio_maker/pages/profile_info.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,14 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     Function? myacc() {
-      Navigator.pushNamed(context, '/profile-info');
+      final uid = auth.currentUser?.uid;
+      Navigator.pushNamed(context, '/profile-info',arguments: ProfileInfo(uid:uid));
+      final email = auth.currentUser?.email;
+
+      print('$uid $email');
+
+      // xU17fAhYS4dhMD8A1dfhWHjFB7l2 hello1@gmail.com
+      // LN6dkLTetybF0IryIDnnhQKGOH72 hello2@gmail.com
     }
 
     return Scaffold(
