@@ -30,6 +30,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
     // TODO: implement initState
 
     // getUid();
+    getUid();
   }
 
   String? selectedItem = 'Male';
@@ -50,19 +51,17 @@ class _ProfileInfoState extends State<ProfileInfo> {
 
   String? uid;
 
-  Function ? getUid() {
+  Function? getUid() {
     final auth = FirebaseAuth.instance;
     uid = auth.currentUser?.uid;
-    return uid;
   }
-
-  DocumentReference users =
-      FirebaseFirestore.instance.collection('users').doc();
 
   Future<void>? addProfile() {
     firstName = fName.text;
     lastName = lName.text;
     phoneNumber = phone.text;
+    DocumentReference users =
+        FirebaseFirestore.instance.collection('users').doc(uid);
 
     return users
         .set({
@@ -82,6 +81,10 @@ class _ProfileInfoState extends State<ProfileInfo> {
 
   @override
   Widget build(BuildContext context) {
+    // DocumentReference users =
+    //     FirebaseFirestore.instance.collection('users').doc(uid);
+    print('heres uid is:  $uid ');
+
     final parsedDate = parsingDate();
 
     return Scaffold(
