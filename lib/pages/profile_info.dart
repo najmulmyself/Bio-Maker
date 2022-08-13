@@ -11,8 +11,8 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:jiffy/jiffy.dart';
 
 class ProfileInfo extends StatefulWidget {
-  final uid;
-  ProfileInfo({this.uid});
+  // final uid;
+  ProfileInfo();
   @override
   State<ProfileInfo> createState() => _ProfileInfoState();
 }
@@ -48,8 +48,16 @@ class _ProfileInfoState extends State<ProfileInfo> {
   TextEditingController lName = TextEditingController();
   TextEditingController phone = TextEditingController();
 
+  String? uid;
+
+  Function ? getUid() {
+    final auth = FirebaseAuth.instance;
+    uid = auth.currentUser?.uid;
+    return uid;
+  }
+
   DocumentReference users =
-      FirebaseFirestore.instance.collection('users').doc(uid);
+      FirebaseFirestore.instance.collection('users').doc();
 
   Future<void>? addProfile() {
     firstName = fName.text;

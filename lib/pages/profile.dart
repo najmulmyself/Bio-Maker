@@ -28,7 +28,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     Function? myacc() {
       final uid = auth.currentUser?.uid;
-      Navigator.pushNamed(context, '/profile-info',arguments: ProfileInfo(uid:uid));
+      Navigator.pushNamed(context, '/profile-info',arguments: ProfileInfo());
       final email = auth.currentUser?.email;
 
       print('$uid $email');
