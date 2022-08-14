@@ -14,6 +14,8 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   Stream userStream =
       FirebaseFirestore.instance.collection('users').snapshots();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,13 +29,15 @@ class _UserPageState extends State<UserPage> {
         stream: userStream,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
+            print('Snapshot from hasError : $snapshot');
             return Text('something went wrong');
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
+            print('Snapshot from connectionState : ${snapshot.data}');
             return Text('Data loading');
           }
           return ListView(
-            children: [Text('data')],
+            children: [Text('${snapshot.data}'), Text('${snapshot.data}')],
           );
         },
       ),
