@@ -15,7 +15,6 @@ class _UserPageState extends State<UserPage> {
   Stream userStream =
       FirebaseFirestore.instance.collection('users').snapshots();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +26,8 @@ class _UserPageState extends State<UserPage> {
       // ),
       body: StreamBuilder(
         stream: userStream,
-        builder: (context, snapshot) {
+        builder: (context, AsyncSnapshot snapshot) {
+          // IT IS IMPORTANT TO ADD ASYNCSNAPSHOT, OTHERWISE DOCS WONT BE KNOWN
           if (snapshot.hasError) {
             print('Snapshot from hasError : $snapshot');
             return Text('something went wrong');
@@ -37,8 +37,17 @@ class _UserPageState extends State<UserPage> {
             return Text('Data loading');
           }
           return ListView(
-            children: [Text('${snapshot.data}'), Text('${snapshot.data}')],
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data =
+                  document.data()! as Map<String, dynamic>;
+              return ListTile(
+                title: Text(data['FirstName']),
+                subtitle: Text(data['LastName']),
+              );
+            }).toList(),
           );
+          // },
+          // ;
         },
       ),
     );

@@ -287,7 +287,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            selectedDate == null
+                            selectedDate  == null
                                 ? 'What is your date of birth ?'
                                 : parsedDate.toString(),
                             style: GoogleFonts.lato(
