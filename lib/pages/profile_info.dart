@@ -2,6 +2,7 @@
 
 import 'package:bio_maker/component/button.dart';
 import 'package:bio_maker/component/custom_text_field.dart';
+import 'package:bio_maker/utils/scaffold_msg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
     // TODO: implement initState
 
     // getUid();
-    getUid();
+    // getUid(); // FUNCTION CALLED FROM INITS NO ,ANOTHER OPTION WAS TO CALL FROM ONPRESSED WHERE FIREBASE FIRESTORE ADDED DATA
   }
 
   String? selectedItem = 'Male';
@@ -54,25 +55,41 @@ class _ProfileInfoState extends State<ProfileInfo> {
   Function? getUid() {
     final auth = FirebaseAuth.instance;
     uid = auth.currentUser?.uid;
+
+    /// NEED TO CREATE A FUNCTION OTHERWISE AUTH CANT BE ACCESSED
   }
 
   Future<void>? addProfile() {
+    getUid();
     firstName = fName.text;
     lastName = lName.text;
     phoneNumber = phone.text;
+    // WE ARE INITIALIZING FIREBASE FIRESTORE HERE BCZ USERS CANT BE ACCESSED IF WE INIT DOCREF INSIDE BUILD W.
     DocumentReference users =
         FirebaseFirestore.instance.collection('users').doc(uid);
+    // ANOTHER REASON IS TO ACCESS UID;
+    // UID DECLARED IN INITIALIZER, SO IT WON'T BE USED INSIDE INITIALIZER
 
-    return users
-        .set({
-          'FirstName': firstName,
-          'LastName': lastName,
-          'Phone': phoneNumber,
-          'Gender': selectedItem,
-          'BirthDate': parsingDate(),
-        })
-        .then((value) => print('PROFILE ADDED SUCCESSFULLY'))
-        .catchError((err) => print(err));
+    return users.set({
+      'FirstName': firstName,
+      'LastName': lastName,
+      'Phone': phoneNumber,
+      'Gender': selectedItem,
+      'BirthDate': parsingDate(),
+    }).then((value) {
+      Util(
+              text: 'Data Added Successfully',
+              bgColor: Colors.green,
+              txtColor: Colors.white)
+          .showSnack(context);
+    }).catchError((err) {
+      print(err);
+      Util(
+        bgColor: Colors.red,
+        text: 'Failed to add data',
+        txtColor: Colors.white,
+      ).showSnack(context);
+    });
   }
 
   parsingDate() {
