@@ -12,10 +12,8 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  Stream userStream = FirebaseFirestore.instance
-      .collection('users')
-      .doc('XzlgDksirDM47DssOg6EZ3UlVW92')
-      .snapshots();
+  Stream userStream =
+      FirebaseFirestore.instance.collection('users').snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -35,21 +33,31 @@ class _UserPageState extends State<UserPage> {
             return Text('something went wrong');
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            print('Snapshot from connectionState : ${snapshot}');
-            return Text('Data loading');
+            print('Snapshot from connectionState : ${snapshot.data.docs}');
+            return Center(child: CircularProgressIndicator());
           }
-          return ListView(
-            children: snapshot.data!.docs.map(
-              (DocumentSnapshot document) {
-                Map<String, dynamic> data =
-                    document.data()! as Map<String, dynamic>;
-                // return ListTile(
-                //   title: Text(data['FirstName']),
-                //   subtitle: Text(data['LastName']),
-                // );
-              },
-            ).toList(),
-          );
+          if (snapshot.connectionState == ConnectionState.done) {
+            print('done state: ${snapshot.data}');
+            return ListView(
+              children: snapshot.data.docs.map(
+                (DocumentSnapshot  document)
+              ),
+            );
+          }
+          // return ListView(
+          //   children: [],
+          //   // children: snapshot.data!.docs.map(
+          //   //   (DocumentSnapshot document) {
+          //   //     Map<String, dynamic> data =
+          //   //         document.data()! as Map<String, dynamic>;
+          //   //     // return ListTile(
+          //   //     //   title: Text(data['FirstName']),
+          //   //     //   subtitle: Text(data['LastName']),
+          //   //     // );
+          //   //   },
+          //   // ).toList(),
+          // );
+          return Text('Done');
           // },
           // ;
         },
