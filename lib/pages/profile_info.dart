@@ -27,9 +27,10 @@ class _ProfileInfoState extends State<ProfileInfo> {
   Future pickImage() async {
     var image = await ImagePicker().pickImage(source: ImageSource.camera);
     setState(() {
+      // image!.saveTo('/assets/images');
       _image = image;
       print(_image!.name);
-      print(_image!.path);
+      // print(_image!.saveTo('/assets/images'));
     });
   }
 
@@ -151,9 +152,10 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     onTap: pickImage,
                     child: CircleAvatar(
                       radius: 50,
-                      backgroundImage: _image == null
-                          ? AssetImage('assets/images/human.png')
-                          : AssetImage('${_image!.path}'),
+                      // backgroundImage: _image == null
+                      //     ? AssetImage('assets/images/human.png')
+                      //     : AssetImage('${_image!.path}'),
+                      backgroundImage: Image.file('${_image.path}').image,
                     ),
                   ),
                   SizedBox(
