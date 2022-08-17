@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:io';
+
 import 'package:bio_maker/component/button.dart';
 import 'package:bio_maker/component/custom_text_field.dart';
 import 'package:bio_maker/utils/scaffold_msg.dart';
@@ -10,6 +12,7 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProfileInfo extends StatefulWidget {
   // final uid;
@@ -19,6 +22,14 @@ class ProfileInfo extends StatefulWidget {
 }
 
 class _ProfileInfoState extends State<ProfileInfo> {
+  // IMAGE PICKER
+  File? _image;
+  pickImage() {
+    var image = ImagePicker.pickImage(source: ImageSource.camera);
+  }
+
+  // END IMAGE PICKER
+
   // var uid = widget.uid;
   // Function? getUid() {
   //   final auth = FirebaseAuth.instance;
@@ -131,9 +142,12 @@ class _ProfileInfoState extends State<ProfileInfo> {
               child: Column(
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage('assets/images/human.png'),
+                  GestureDetector(
+                    onTap: null,
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage('assets/images/human.png'),
+                    ),
                   ),
                   SizedBox(
                     height: 20,
@@ -287,7 +301,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            selectedDate  == null
+                            selectedDate == null
                                 ? 'What is your date of birth ?'
                                 : parsedDate.toString(),
                             style: GoogleFonts.lato(

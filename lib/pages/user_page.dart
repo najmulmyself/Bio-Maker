@@ -33,17 +33,18 @@ class _UserPageState extends State<UserPage> {
             return Text('something went wrong');
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            print('Snapshot from connectionState : ${snapshot.data.documents}');
+            print('Snapshot from connectionState : ${snapshot.data}');
             return Center(child: CircularProgressIndicator());
           }
           if (snapshot.connectionState == ConnectionState.done) {
             print('done state: ${snapshot.data}');
-            return ListView(
-              children:
-                  snapshot.data.documents.map((DocumentSnapshot document) {
-                print('fooooo : $document');
-              }),
-            );
+            // return ListView(
+            //   children:
+            //       snapshot.data.documents.map((DocumentSnapshot document) {
+            //     print('fooooo : $document');
+            //   }),
+            // );
+            return ListView();
           }
           // return ListView(
           //   children: [],
