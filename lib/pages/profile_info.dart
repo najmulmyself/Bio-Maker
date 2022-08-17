@@ -29,6 +29,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
     setState(() {
       _image = image;
       print(_image!.name);
+      print(_image!.path);
     });
   }
 
@@ -150,7 +151,9 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     onTap: pickImage,
                     child: CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('${_image!.name}'),
+                      backgroundImage: _image == null
+                          ? AssetImage('assets/images/human.png')
+                          : AssetImage('${_image!.path}'),
                     ),
                   ),
                   SizedBox(
