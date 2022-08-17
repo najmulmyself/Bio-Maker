@@ -12,8 +12,8 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-  Stream userStream =
-      FirebaseFirestore.instance.collection('users').snapshots();
+  // Stream userStream =
+  //     FirebaseFirestore.instance.collection('users').snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class _UserPageState extends State<UserPage> {
       //   child: Text('Users list will be shown here....'),
       // ),
       body: StreamBuilder(
-        stream: userStream,
+        stream: FirebaseFirestore.instance.collection('users').snapshots(),
         builder: (context, AsyncSnapshot snapshot) {
           // IT IS IMPORTANT TO ADD ASYNCSNAPSHOT, OTHERWISE DOCS WONT BE KNOWN
           if (snapshot.hasError) {
@@ -33,15 +33,16 @@ class _UserPageState extends State<UserPage> {
             return Text('something went wrong');
           }
           if (snapshot.connectionState == ConnectionState.waiting) {
-            print('Snapshot from connectionState : ${snapshot.data.docs}');
+            print('Snapshot from connectionState : ${snapshot.data.documents}');
             return Center(child: CircularProgressIndicator());
           }
           if (snapshot.connectionState == ConnectionState.done) {
             print('done state: ${snapshot.data}');
             return ListView(
-              children: snapshot.data.docs.map(
-                (DocumentSnapshot  document)
-              ),
+              children:
+                  snapshot.data.documents.map((DocumentSnapshot document) {
+                print('fooooo : $document');
+              }),
             );
           }
           // return ListView(

@@ -41,7 +41,10 @@ dependencies:
   extended_phone_number_input: ^1.0.2
   intl_phone_number_input: ^0.7.0+2
   intl_phone_field: ^3.1.0
-  flutter_datetime_picker: ^1.5.1
+  flutter_datetime_picker:
+    git:
+      url: https://github.com/Realank/flutter_datetime_picker.git
+      ref: master
   jiffy: ^5.0.0
   cloud_firestore: ^3.4.3
 
