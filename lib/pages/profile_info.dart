@@ -23,9 +23,13 @@ class ProfileInfo extends StatefulWidget {
 
 class _ProfileInfoState extends State<ProfileInfo> {
   // IMAGE PICKER
-  File? _image;
-  pickImage() {
-    var image = ImagePicker.pickImage(source: ImageSource.camera);
+  XFile? _image;
+  Future pickImage() async {
+    var image = await ImagePicker().pickImage(source: ImageSource.camera);
+    setState(() {
+      _image = image;
+      print(_image!.name);
+    });
   }
 
   // END IMAGE PICKER
@@ -143,10 +147,10 @@ class _ProfileInfoState extends State<ProfileInfo> {
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   GestureDetector(
-                    onTap: null,
+                    onTap: pickImage,
                     child: CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('assets/images/human.png'),
+                      backgroundImage: AssetImage('${_image!.name}'),
                     ),
                   ),
                   SizedBox(
