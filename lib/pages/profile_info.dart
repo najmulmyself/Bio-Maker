@@ -23,11 +23,15 @@ class ProfileInfo extends StatefulWidget {
 
 class _ProfileInfoState extends State<ProfileInfo> {
   // IMAGE PICKER
-  File? _image;
+  File?
+      _image; // DECLARING FILE TYPE AS FILE ANOTHER WAY TO DECLARE FILE IS THAT XFILE , CANT MANAGE TO HANDLE IT
   Future pickImage() async {
-    var image = await ImagePicker().pickImage(source: ImageSource.camera);
-    final File? tempImg = File(image!.path);
+    var image = await ImagePicker().pickImage(
+        source: ImageSource
+            .camera); // IMAGE IS A XFILE TYPE BY DEFAULT, NEED TO CONVERT AS FILE TO FURTHER USE
+    final File? tempImg = File(image!.path); //CONVERTING XFILE TO FILE
     setState(() {
+      // FOR REALTIME UPDATE WE NEED TO CALL SET STATE
       // image!.saveTo('/assets/images');
       _image = tempImg;
       print(_image!.path);
@@ -154,7 +158,8 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     onTap: pickImage,
                     child: CircleAvatar(
                       radius: 50,
-                      backgroundImage:
+                      backgroundImage: // CANT USE FILEIMAGE(_IMAGE!) NULL HERE, SO NEED TO USE NULL CHECK!
+                      //IF ELSE IS NOT MENDATORY
                           _image != null ? FileImage(_image!, scale: 5) : null,
                     ),
                     // _image != null
