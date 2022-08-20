@@ -25,7 +25,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
   // IMAGE PICKER
   File? _image;
   Future pickImage() async {
-    var image = await ImagePicker().pickImage(source: ImageSource.camera);
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
     final File? tempImg = File(image!.path);
     setState(() {
       // image!.saveTo('/assets/images');
@@ -152,18 +152,30 @@ class _ProfileInfoState extends State<ProfileInfo> {
                 children: [
                   GestureDetector(
                     onTap: pickImage,
-                    child: _image != null
-                        ? Image.file(
-                            _image!,
-                            height: 120,
-                            width: 120,
-                            // radius: 50,
-                            // backgroundImage: _image == null
-                            // ? AssetImage('assets/images/human.png')
-                            // : Image.file(_image!.path).image,
-                            // backgroundImage: Image.file('${_image.path}').image,
-                          )
-                        : CircleAvatar(),
+                    child: Container(
+                      height: 150,
+                      width: 150,
+                      
+                      decoration: BoxDecoration(shape: BoxShape.circle),
+                      // border: Border.all(),
+                      // borderRadius: BorderRadius.circular(100)),
+                      child: _image != null
+                          ? Image.file(
+                              _image!,
+                              fit: BoxFit.cover,
+                              
+                              // height: 120,
+                              // width: 120,
+                              // radius: 50,
+                              // backgroundImage: _image == null
+                              // ? AssetImage('assets/images/human.png')
+                              // : Image.file(_image!.path).image,
+                              // backgroundImage: Image.file('${_image.path}').image,
+                            )
+                          : CircleAvatar(
+                              radius: 50,
+                            ),
+                    ),
                   ),
                   SizedBox(
                     height: 20,
