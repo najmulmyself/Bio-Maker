@@ -12,9 +12,9 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-
+    getData()async{
+    CollectionReference users = await FirebaseFirestore.instance.collection('users');
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
