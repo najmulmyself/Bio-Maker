@@ -33,8 +33,8 @@ class MyApp extends StatelessWidget {
         '/registration': (context) => RegistrationScreen(),
         '/user-page': (context) => UserPage(),
         '/profile': (context) => Profile(),
-        '/login-success':(context) => LoginSuccess(),
-        '/profile-info':(context) => ProfileInfo()
+        '/login-success': (context) => LoginSuccess(),
+        '/profile-info': (context) => ProfileInfo()
       },
     );
   }

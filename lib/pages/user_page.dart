@@ -12,9 +12,12 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
-    getData()async{
-    CollectionReference users = await FirebaseFirestore.instance.collection('users');
+  getData() async {
+    var firestore = FirebaseFirestore.instance;
+    QuerySnapshot qn = await firestore.collection('users').get();
+    return qn.docs;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +27,20 @@ class _UserPageState extends State<UserPage> {
       // body: Center(
       //   child: Text('Users list will be shown here....'),
       // ),
-      body: null,
+      body: FutureBuilder(
+        future: getData(),
+        builder: (context, snapshot) {
+          return ListView.builder(
+            itemBuilder: (_, index) {
+              DocumentSnapshot data = snapshot.data[index];
+              return ListTile(
+                title: Text(data['FirstName']),
+              );
+            },
+            itemCount: snapshot.data.length,
+          );
+        },
+      ),
     );
   }
 }
