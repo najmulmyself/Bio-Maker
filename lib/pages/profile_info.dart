@@ -30,11 +30,12 @@ class _ProfileInfoState extends State<ProfileInfo> {
         source: ImageSource
             .camera); // IMAGE IS A XFILE TYPE BY DEFAULT, NEED TO CONVERT AS FILE TO FURTHER USE
     final File? tempImg = File(image!.path); //CONVERTING XFILE TO FILE
+    // final savedFile = File(image.saveTo('images/profile.jpg')); //SAVING FILE TO LOCAL STORAGE
     setState(() {
       // FOR REALTIME UPDATE WE NEED TO CALL SET STATE
       // image!.saveTo('/assets/images');
       _image = tempImg;
-      print(_image!.path);
+      print(_image);
       // print(_image!.saveTo('/assets/images'));
     });
     // return tempImg;
@@ -154,12 +155,13 @@ class _ProfileInfoState extends State<ProfileInfo> {
               child: Column(
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
+                  // ImageCache(),
                   GestureDetector(
                     onTap: pickImage,
                     child: CircleAvatar(
                       radius: 50,
                       backgroundImage: // CANT USE FILEIMAGE(_IMAGE!) NULL HERE, SO NEED TO USE NULL CHECK!
-                      //IF ELSE IS NOT MENDATORY
+                          //IF ELSE IS NOT MENDATORY
                           _image != null ? FileImage(_image!, scale: 5) : null,
                     ),
                     // _image != null
