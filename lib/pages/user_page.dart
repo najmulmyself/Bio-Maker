@@ -29,15 +29,15 @@ class _UserPageState extends State<UserPage> {
       // ),
       body: FutureBuilder(
         future: getData(),
-        builder: (context, snapshot) {
+        builder: (context, AsyncSnapshot snapshot) {
           return ListView.builder(
+            itemCount: snapshot.data.length,
             itemBuilder: (_, index) {
               DocumentSnapshot data = snapshot.data[index];
               return ListTile(
                 title: Text(data['FirstName']),
               );
             },
-            itemCount: snapshot.data.length,
           );
         },
       ),
