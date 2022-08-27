@@ -28,19 +28,25 @@ class _UserPageState extends State<UserPage> {
       //   child: Text('Users list will be shown here....'),
       // ),
       body: FutureBuilder(
-        future: getData(),
-        builder: (context, AsyncSnapshot snapshot) {
-          return ListView.builder(
-            itemCount: snapshot.data.length,
-            itemBuilder: (_, index) {
-              DocumentSnapshot data = snapshot.data[index];
-              return ListTile(
-                title: Text(data['FirstName']),
-              );
-            },
-          );
-        },
-      ),
+          future: getData(),
+          builder: (context, AsyncSnapshot snapshot) {
+            // IF ASYNCSNAPSHOT DONT USE NULL ERROR HAPPEND ON SNAPSHOT.DATA
+            // if (snapshot != null) {
+            return snapshot.data != null
+                ? ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (_, index) {
+                      DocumentSnapshot data = snapshot.data[index];
+
+                      return ListTile(
+                        title: Text(data['FirstName']),
+                      );
+                    },
+                  )
+                : Center(child: CircularProgressIndicator());
+          }
+          // },
+          ),
     );
   }
 }
