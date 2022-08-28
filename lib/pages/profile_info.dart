@@ -23,6 +23,7 @@ class ProfileInfo extends StatefulWidget {
 
 class _ProfileInfoState extends State<ProfileInfo> {
   // IMAGE PICKER
+  String? savedFile;
   File?
       _image; // DECLARING FILE TYPE AS FILE ANOTHER WAY TO DECLARE FILE IS THAT XFILE , CANT MANAGE TO HANDLE IT
   Future pickImage() async {
@@ -31,14 +32,17 @@ class _ProfileInfoState extends State<ProfileInfo> {
             .camera); // IMAGE IS A XFILE TYPE BY DEFAULT, NEED TO CONVERT AS FILE TO FURTHER USE
     final File? tempImg = File(image!.path); //CONVERTING XFILE TO FILE
     // final savedFile = File(image.saveTo('images/profile.jpg')); //SAVING FILE TO LOCAL STORAGE
+    final getDir = '../../assets/images';
     setState(() {
       // FOR REALTIME UPDATE WE NEED TO CALL SET STATE
       // image!.saveTo('/assets/images');
+      final savedFile = image.saveTo('../../assets/images');
       _image = tempImg;
       print(_image);
       // print(_image!.saveTo('/assets/images'));
     });
     // return tempImg;
+    print(savedFile);
   }
 
   // END IMAGE PICKER
@@ -189,7 +193,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     height: 20,
                   ),
                   Text(
-                    'Full name',
+                    firstName == null ? 'Full name' : firstName!,
                     style: GoogleFonts.lato(
                         textStyle: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w600)),
@@ -210,6 +214,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
                     height: 20,
                   ),
                   CustomTextField(
+                    initValue: firstName,
                     controller: fName,
                     text: 'What\'s your first name ?',
                   ),

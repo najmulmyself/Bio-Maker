@@ -12,6 +12,12 @@ class UserPage extends StatefulWidget {
 }
 
 class _UserPageState extends State<UserPage> {
+  String? firstName;
+  String? lastName;
+  String? userPhone;
+  String ? userBirthday;
+  String ? userGender;
+
   getData() async {
     var firestore = FirebaseFirestore.instance;
     QuerySnapshot qn = await firestore.collection('users').get();
@@ -28,7 +34,7 @@ class _UserPageState extends State<UserPage> {
       //   child: Text('Users list will be shown here....'),
       // ),
       body: FutureBuilder(
-          future: getData(),
+          future: getData(), //this function should return something
           builder: (context, AsyncSnapshot snapshot) {
             // IF ASYNCSNAPSHOT DONT USE NULL ERROR HAPPEND ON SNAPSHOT.DATA
             // if (snapshot != null) {
@@ -38,8 +44,19 @@ class _UserPageState extends State<UserPage> {
                     itemBuilder: (_, index) {
                       DocumentSnapshot data = snapshot.data[index];
 
+                      setState(() {
+                        firstName = data['FirstName'];
+                        lastName = data['LastName'];
+                        userPhone = data['Phone'];
+                        userGender = data['Gender'];
+                        userBirthday = data['Birthday'];
+                      });
+
                       return ListTile(
-                        title: Text(data['FirstName']),
+                        // leading: Text(data['BirthDate']),
+                        title: Text(data['FirstName'] + ' ' + data['LastName']),
+                        subtitle: Text(data['Phone']),
+                        trailing: Text(data['Gender']),
                       );
                     },
                   )

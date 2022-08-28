@@ -3,13 +3,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? text;
+  final String? initValue;
   TextEditingController? controller;
-  CustomTextField({this.controller, this.text});
+  CustomTextField({this.controller, this.text,this.initValue});
   @override
   Widget build(BuildContext context) {
     return Container(
       // decoration: BoxDecoration(),
       child: TextFormField(
+        initialValue: initValue,
         controller: controller,
         showCursor: true,
         cursorColor: Colors.grey.shade400,
